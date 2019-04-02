@@ -70,10 +70,15 @@ test('test_prioritize_tasks_with_todos_returns_max_todo_value', () => {
 
 test.skip('test_workday_on_day_off_returns_false', () => {
   // arrange
+  const dayOffBot = newRobot(false, true, false);
+  dayOffBot.dayoff = 'Tuesday';
+  const expectedResult = false;
 
   // act
+  const result = isWorkDay(dayOffBot, 'Wednesday');
 
   // assert
+  expect(result).toEqual(expectedResult);
 });
 
 test.skip('test_workday_not_day_off_returns_true', () => {
